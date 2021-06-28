@@ -122,7 +122,7 @@ document.addEventListener('click', function (e) {
 
     document.body.appendChild(input);
 
-    info.textContent = `Copied color: ${color}`
+    info.innerHTML = `${color} <br />Code copied to clipboard.`
 
     input.setAttribute('value', color);
     input.select();
@@ -132,7 +132,7 @@ document.addEventListener('click', function (e) {
 
     timeoutID = setTimeout(() => {
       info.classList.remove('active');
-    }, 3000);
+    }, 1000);
 
     document.body.setAttribute('style', `background-color: ${e.target.dataset.color}`);
   }

@@ -1,3 +1,3 @@
-## Material Colors
+## material-colors
 
 <img src="material-colors.png">

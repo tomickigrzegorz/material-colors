@@ -50,12 +50,10 @@ function setChosenColors(labels) {
   labels.reverse().map((label, index) => {
     const lastElement = Object.values(label[1]).pop();
 
-    const checked = index === 0 ? true : false;
-
     const chosen = `
       <label title="${label[0]}">
-        <input type="radio" name="color-radio" value="${label[0]}" checked=${checked}>
-        <span style="background-color: ${lastElement.hex}"></span>
+        <input type="radio" name="color-radio" value="${label[0]}">
+        <span class="color-item" data-hex="${lastElement.hex}" style="background-color: ${lastElement.hex}"></span>
       </label >
       `;
 
@@ -63,6 +61,21 @@ function setChosenColors(labels) {
   });
 
   showAllColors(labels);
+
+  // first red set checked
+  document.querySelector('[title="red"]').firstElementChild.click();
+}
+
+function removeStyleFromSpan(event) {
+  const target = event.target.nextElementSibling;
+  const colorItems = document.querySelectorAll('.color-item');
+
+  colorItems.forEach(item => {
+    const colorHex = item.getAttribute('data-hex');
+    const colorHexTarget = target.getAttribute('data-hex');
+    item.setAttribute('style', `background-color: ${colorHex}`);
+    target.setAttribute('style', `transform: scale(0.5); box-shadow: 0 0 0 10px rgb(255 255 255), 0 0 0 20px ${colorHexTarget}; background-color: ${colorHexTarget}`);
+  });
 }
 
 function showAllColors(labels) {
@@ -71,8 +84,11 @@ function showAllColors(labels) {
   setColors(labels, 'red');
 
   // set color when click on radio color
-  document.addEventListener('input', (e) => {
+  document.addEventListener('change', (e) => {
+
     setColors(labels, e.target.value);
+
+    removeStyleFromSpan(e);
   })
 }
 

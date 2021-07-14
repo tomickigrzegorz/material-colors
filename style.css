@@ -26,6 +26,15 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+body::before {
+  display: block;
+  margin-top: 20px;
+  content: "Clicking on the color bar will copy it to the clipboard";
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
 .app {
   display: flex;
   justify-content: center;

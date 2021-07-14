@@ -74,7 +74,7 @@ function removeStyleFromSpan(event) {
     const colorHex = item.getAttribute('data-hex');
     const colorHexTarget = target.getAttribute('data-hex');
     item.setAttribute('style', `background-color: ${colorHex}`);
-    target.setAttribute('style', `transform: scale(0.5); box-shadow: 0 0 0 10px rgb(255 255 255), 0 0 0 20px ${colorHexTarget}; background-color: ${colorHexTarget}`);
+    target.setAttribute('style', `transform: scale(0.5); box-shadow: 0 0 0 10px rgb(255 255 255), 0 0 0 15px ${colorHexTarget}; background-color: ${colorHexTarget}`);
   });
 }
 

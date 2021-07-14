@@ -203,7 +203,7 @@ document.addEventListener('click', function (e) {
     const hsl = hexToHSL(hex);
     const rgb = hexToRGB(hex);
 
-    info.innerHTML = `${hex} <br /> ${hsl} <br /> ${rgb} <br />Code copied to clipboard.`
+    info.innerHTML = `${hex} <br /> ${hsl} <br /> ${rgb} <br /><br />Code copied to clipboard.`
 
     input.setAttribute('value', `${hex}, ${hsl}, ${rgb}`);
     input.select();

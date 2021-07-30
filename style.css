@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
+:root {
+  --info-color: "black";
+}
+
 *,
 :after,
 :before {
@@ -33,6 +37,7 @@ body::before {
   text-transform: uppercase;
   text-align: center;
   font-size: 0.8rem;
+  color: var(--info-color);
 }
 
 .app {

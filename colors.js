@@ -149,6 +149,7 @@ function showAllColors(labels) {
   document.addEventListener('change', (e) => {
 
     setColors(labels, e.target.value);
+    document.documentElement.style.setProperty('--info-color', 'black');
 
     removeStyleFromSpan(e);
   })
@@ -174,11 +175,20 @@ function setColors(labels, color) {
   const arrayColors = labels.filter(item => item[0] === color);
   for (const [key, value] of Object.entries(arrayColors[0][1])) {
     colorList.insertAdjacentHTML('beforeend', `
-      <div class="colors-item" data-type="${key}" data-color="${value.hex}" style="background-color: ${value.hex};">
+      <div class="colors-item" data-type="${key}" data-color="${value.hex}" style="background-color: ${value.hex}; color: ${invertHex(value.hex)}">
         <span>${value.hex}</span>
       </div>
     `);
   };
+}
+
+function invertHex(hexcolor) {
+  hexcolor = hexcolor.replace("#", "");
+  const r = parseInt(hexcolor.substr(0, 2), 16);
+  const g = parseInt(hexcolor.substr(2, 2), 16);
+  const b = parseInt(hexcolor.substr(4, 2), 16);
+  const yiq = (((r * 299) + (g * 587) + (b * 114)) / 1000);
+  return (yiq >= 128) ? 'black' : 'white';
 }
 
 
@@ -203,7 +213,7 @@ document.addEventListener('click', function (e) {
     const hsl = hexToHSL(hex);
     const rgb = hexToRGB(hex);
 
-    info.innerHTML = `${hex} <br /> ${hsl} <br /> ${rgb} <br /><br />Code copied to clipboard.`
+    info.innerHTML = `Code copied to clipboard.<br/><br/>${hex}<br />${hsl}<br />${rgb}`
 
     input.setAttribute('value', `${hex}, ${hsl}, ${rgb}`);
     input.select();
@@ -215,6 +225,9 @@ document.addEventListener('click', function (e) {
       info.classList.remove('active');
     }, 1000);
 
-    document.body.setAttribute('style', `background-color: ${e.target.dataset.color}`);
+    const hexColor = e.target.dataset.color;
+
+    document.body.setAttribute('style', `background-color: ${hexColor}`);
+    document.documentElement.style.setProperty('--info-color', `${invertHex(hexColor)}`);
   }
 })

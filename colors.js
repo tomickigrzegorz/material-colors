@@ -176,6 +176,7 @@ function setColors(labels, color) {
   for (const [key, value] of Object.entries(arrayColors[0][1])) {
     colorList.insertAdjacentHTML('beforeend', `
       <div class="colors-item" data-type="${key}" data-color="${value.hex}" style="background-color: ${value.hex}; color: ${invertHex(value.hex)}">
+        <span>${key}</span>
         <span>${value.hex}</span>
       </div>
     `);
@@ -199,7 +200,7 @@ document.addEventListener('click', function (e) {
 
     clearTimeout(timeoutID);
 
-    const hex = e.target.textContent.trim();
+    const hex = e.target.lastElementChild.textContent.trim();
     const input = document.createElement('input');
     const hiddenColor = document.querySelector('.hidden-color');
 
@@ -227,7 +228,7 @@ document.addEventListener('click', function (e) {
 
     const hexColor = e.target.dataset.color;
 
-    document.body.setAttribute('style', `background-color: ${hexColor}`);
+    document.documentElement.style.setProperty('--body-color', hexColor);
     document.documentElement.style.setProperty('--info-color', `${invertHex(hexColor)}`);
   }
 })

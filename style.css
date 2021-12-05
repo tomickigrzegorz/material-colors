@@ -108,6 +108,7 @@ body::before {
   color: var(--info-color);
   font-size: 70%;
   margin-bottom: 10px;
+  line-height: 1;
 }
 
 @media (max-width: 800px) {

@@ -31,22 +31,19 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-body::before {
+.app {
+  max-width: 1600px;
+  margin: auto;
+}
+
+.top-info {
   display: block;
-  margin-top: 20px;
+  padding-top: 20px;
   content: 'Clicking on the color bar will copy it to the clipboard';
   text-transform: uppercase;
   text-align: center;
   font-size: 0.8rem;
   color: var(--info-color);
-}
-
-.app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 1600px;
-  margin: auto;
 }
 
 .flex {
@@ -180,14 +177,14 @@ body::before {
 
 .select-chose {
   padding: 0;
-  height: 2rem;
   border: 0;
+  height: 2rem;
   border-radius: 0.375rem;
   line-height: inherit;
   margin-right: 100%;
   color: inherit;
   padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-right: 1rem;
   color: #fff;
   background-color: #000;
 }

@@ -19,6 +19,12 @@ info.className += 'info';
 
 root.insertAdjacentElement('afterend', info);
 
+const topInfo = document.createElement('div');
+topInfo.className = 'top-info';
+topInfo.textContent = 'Clicking on the color bar will copy it to the clipboard';
+
+root.insertAdjacentElement('afterbegin', topInfo);
+
 async function fetchColors() {
   try {
     const response = await fetch('./colors.json');

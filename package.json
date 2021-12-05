@@ -1,0 +1,11 @@
+{
+  "name": "material-colors",
+  "version": "1.0.0",
+  "main": "colors.js",
+  "repository": "https://github.com/tomik23/material-colors.git",
+  "author": "Grzegorz Tomicki <gtomik@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
+}

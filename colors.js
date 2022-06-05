@@ -241,8 +241,8 @@ document.addEventListener("click", function (e) {
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(input.value).then(() => {
-        const tempInput = select(".tmp-input");
-        tempInput.remove();
+        const tmpInput = select(".tmp-input");
+        tmpInput.remove();
       });
     } else {
       console.log("Clipboard API not supported");

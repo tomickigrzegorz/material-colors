@@ -241,7 +241,7 @@ document.addEventListener("click", function (e) {
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(input.value).then(() => {
-        const tmpInput = select(".tmp-input");
+        const tmpInput = document.querySelector(".tmp-input");
         tmpInput.remove();
       });
     } else {

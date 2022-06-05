@@ -237,7 +237,7 @@ document.addEventListener("click", function (e) {
     info.innerHTML = `Code copied to clipboard.<br/>${colorType}`;
 
     input.setAttribute("value", `${colorType}`);
-    input.classList.add("temp-input");
+    input.classList.add("tmp-input");
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(input.value).then(() => {
